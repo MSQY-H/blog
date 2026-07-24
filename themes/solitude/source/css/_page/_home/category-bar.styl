@@ -1,0 +1,176 @@
+#category-bar
+  position relative
+  display flex
+  align-items center
+  justify-content space-between
+  width 100%
+  min-height 0
+  margin 0
+  padding 0
+  overflow hidden
+  white-space nowrap
+  background transparent
+  border 0
+  border-radius 0
+  user-select none
+  transition .3s
+
+.category-bar-items
+  position relative
+  display flex
+  align-items center
+  gap 10px
+  height auto
+  overflow-x auto
+  overflow-y hidden
+  white-space nowrap
+  scrollbar-width none
+
+  &::-webkit-scrollbar
+    display none
+
+.category-bar-item
+  a
+    position relative
+    display inline-flex
+    align-items center
+    justify-content center
+    gap 4px
+    min-height 38px
+    padding 8px 18px
+    overflow hidden
+    color var(--efu-fontcolor)
+    font-size 14px
+    font-weight 700
+    line-height 1
+    background var(--efu-card-bg)
+    border var(--style-border-always)
+    border-radius 999px
+    transition .3s
+
+    &:hover
+      color var(--efu-white)
+      background var(--efu-main)
+
+  &.select
+    a
+      color var(--efu-card-bg)
+      background var(--efu-main)
+      border-color var(--efu-main)
+      box-shadow var(--efu-shadow-main)
+
+.category-bar-link-icon
+  display inline-flex
+  align-items center
+  justify-content center
+  width 14px
+  height 14px
+
+  i
+    font-size 13px
+
+.category-bar-more-group
+  position relative
+  z-index 2
+  display flex
+  align-items center
+  flex-shrink 0
+  gap 6px
+
+.category-bar-next
+  display inline-flex
+  align-items center
+  justify-content center
+  flex-shrink 0
+  width 38px
+  min-width 38px
+  height 38px
+  min-height 38px
+  padding 0
+  overflow hidden
+  color var(--efu-fontcolor)
+  background var(--efu-card-bg)
+  border var(--style-border-always)
+  border-radius 50%
+  cursor pointer
+  transition .3s
+
+  i
+    font-size 14px
+
+.category-bar-more
+  position relative
+  display inline-flex
+  align-items center
+  justify-content center
+  min-height 38px
+  padding 8px 18px
+  overflow hidden
+  color var(--efu-fontcolor)
+  font-size 14px
+  font-weight 700
+  line-height 1
+  background var(--efu-card-bg)
+  border var(--style-border-always)
+  border-radius 999px
+  transition .3s
+
+.category-bar-next:hover, .category-bar-more:hover
+  color var(--efu-white)
+  background var(--efu-main)
+
+[data-theme='dark']
+  .home-category-bar .category-bar-item:not(.select) a::after,
+  .home-category-bar .category-bar-more::after,
+  .home-category-bar .category-bar-next::after
+    content ''
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 50%
+    border-radius inherit
+    background linear-gradient(to bottom, var(--current-banner-theme, var(--efu-theme)) 0, transparent 100%)
+    opacity .3
+    pointer-events none
+
+@media (max-width: 768px)
+  .home-category-bar
+    position static
+    width 100%
+    margin 0 !important
+    padding 0
+    background var(--efu-background)
+
+  #category-bar
+    height auto
+    margin 0
+    padding 0
+    background transparent
+    border 0
+
+  .category-bar-items
+    width 100%
+    gap 6px
+    padding 0 16px
+    flex-wrap nowrap
+
+  .category-bar-item
+    a
+      flex-shrink 0
+      min-height 38px
+      padding 8px 18px
+      color var(--efu-fontcolor)
+      font-size 14px
+      background var(--efu-card-bg)
+      border-radius 50px
+      box-shadow none
+
+    &.select a
+      color var(--efu-white)
+      background var(--efu-main)
+      border-color var(--efu-main)
+      box-shadow none
+
+  .category-bar-next, .category-bar-more
+    display none

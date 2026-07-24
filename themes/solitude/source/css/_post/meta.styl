@@ -1,0 +1,410 @@
+.post
+  #page-header.post-bg
+    height 24rem
+    background-color var(--efu-background)
+    transition .6s
+    overflow hidden
+
+    &::before
+      position absolute
+      top 0
+      left 0
+      display block
+      width 100%
+      height 100%
+      background-color var(--efu-main)
+      content ""
+      opacity 1
+      transition .3s
+
+    +maxWidth768()
+      height 30rem
+      margin-bottom -12px
+      background-color var(--efu-main) !important
+      transition 0s
+
+      &::before
+        height 15rem
+
+  .post-bg
+    #post-cover
+      width 100%
+      height 100%
+      min-width 50vw
+      min-height 20rem
+      object-fit cover
+      opacity .8
+
+      +minWidth768()
+        height 70% !important
+        min-height 15rem !important
+        opacity 1 !important
+
+      +maxWidth768()
+        height 70%
+        min-height 15rem
+        opacity 1
+
+    .coverdiv
+      position relative
+      width 70%
+      height 100%
+      margin 0 -20% 0 auto
+      overflow hidden
+      filter blur(10px)
+      transform rotate(10deg) translateY(-10%) scale(2)
+
+      &::after
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+        box-shadow 110px -130px 300px 60px var(--efu-main) inset
+        content ""
+
+      +minWidth768()
+        filter blur(30px)
+        opacity 0
+
+        &.loaded
+          display block
+          opacity .5
+          animation showCover 1s .3s backwards
+
+      +maxWidth768()
+        position absolute
+        z-index 1
+        width 100%
+        height 30rem
+        margin 0 0 0 auto
+        filter blur(0)
+        opacity 1
+        transform rotate(0) translateY(0) scale(1)
+
+        &::after
+          height 70%
+          box-shadow 0 0 105px 99px var(--efu-main) inset
+
+      &.loaded
+        display block
+
+  .post-cover-aside
+    display none !important
+    position absolute
+    top 50%
+    right max(calc((100vw - 1400px) / 2 + 30px), 30px)
+    z-index 11
+    display block
+    width 300px
+    aspect-ratio 16 / 9
+    overflow hidden
+    border-radius 16px
+    box-shadow 0 8px 16px -4px rgba(0, 0, 0, .32)
+    transform translateY(-50%)
+    transition transform .18s ease-out, box-shadow .18s ease-out
+
+    &::after
+      position absolute
+      inset 0
+      border-radius inherit
+      background radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .22), rgba(255, 255, 255, .08) 22%, transparent 55%)
+      content ""
+      opacity 0
+      pointer-events none
+      transition opacity .18s ease-out
+
+    &:hover
+      box-shadow 0 8px 16px -4px var(--efu-main)
+      transform translateY(-50%) scale(1.035)
+
+      &::after
+        opacity 1
+
+    +maxWidth1200()
+      display none
+
+    .post-cover-aside-link
+      display block
+      width 100%
+      height 100%
+      line-height 0
+
+    .post-cover-aside-img
+      display block
+      width 100%
+      height 100%
+      border-radius inherit
+      object-fit cover
+      transform scale(1.08)
+      transition transform .18s ease-out
+
+    &:hover .post-cover-aside-img
+      transform scale(1.1)
+
+  #post-info
+    position absolute
+    top 14px
+    left 0               // 必须添加
+    right 0              // 必须添加
+    z-index 10
+    display flex
+    flex-direction column
+    align-items flex-start
+    justify-content center
+    gap 16px
+    width auto // 修改
+    max-width 1400px
+    height calc(100% - 30px)
+    margin 0 auto
+    padding 0 30px
+    color var(--efu-white)
+    animation slide-in .6s 0s backwards
+
+    +maxWidth768()
+      top auto
+      right 0
+      bottom 0
+      left 0
+      align-items center
+      justify-content normal
+      gap 0
+      width 100%
+      max-width none
+      height fit-content
+      margin 0
+      padding 7rem 1rem 60px
+      background-image linear-gradient(to bottom, transparent, var(--efu-main))
+      text-align center
+
+      &::after
+        position absolute
+        bottom 0
+        left 0
+        z-index 0
+        width 100%
+        height 200%
+        box-shadow 0 -214px 287px 45px var(--efu-main-op) inset
+        content ""
+
+    #post-firstinfo,
+    .post-title,
+    #post-meta
+      width calc(100% - 300px - 80px)
+      max-width none
+      margin-left 40px
+
+    +maxWidth1200()
+      #post-firstinfo,
+      .post-title,
+      #post-meta
+        width calc(100% - 80px)
+
+    .post-title
+      display -webkit-box
+      height calc(2 * 1.38em)
+      min-height calc(2 * 1.38em)
+      margin-top 4px
+      margin-bottom 8px
+      padding 0
+      overflow hidden
+      color var(--efu-white)
+      font-size 42px
+      font-weight 700
+      line-height 1.38
+      text-align left
+      -webkit-box-orient vertical
+      -webkit-line-clamp 2
+
+      +maxWidth768()
+        z-index 1
+        width 100%
+        height auto
+        min-height 0
+        margin .2rem auto !important
+        font-size 1.2rem
+        line-height 1.2
+        text-align center
+        -webkit-line-clamp 3
+
+    #post-meta
+      display flex
+      color var(--efu-white)
+      font-size 95%
+      user-select none
+      transition .3s
+
+      +maxWidth768()
+        z-index 1
+        align-items center
+        justify-content center
+        width 100%
+        margin-left 0
+        font-size 90%
+
+      a
+        color inherit
+        text-decoration none
+        transition .3s
+
+      i
+        margin-right 4px
+        font-size 16px
+        line-height 1
+
+      .meta-secondline
+        display flex
+        flex-direction row
+        flex-wrap wrap
+        align-items center
+        justify-content flex-start
+        gap 8px
+
+        +maxWidth768()
+          justify-content center
+          width 100%
+          text-align center
+
+        > span:not(.post-meta-separator),
+        > a.post-meta-pv
+          display inline-flex
+          align-items center
+          box-sizing border-box
+          height 32px
+          margin 0
+          padding 0 .5rem
+          border-radius 99px
+          background var(--efu-white-op)
+          color var(--efu-white)
+          line-height 1
+          opacity 1
+          transition background .3s ease-out, color .3s ease-out
+
+          +maxWidth768()
+            line-height 1.5
+
+          &:hover
+            background var(--efu-white)
+            color var(--efu-main)
+
+            a
+              color inherit
+
+        .post-meta-separator
+          display none
+
+        .post-meta-commentcount
+          cursor pointer
+
+        .word-count,
+        .leancloud-visitors-count,
+        #busuanzi_value_page_pv,
+        #busuanzi_page_pv
+          font-weight 800
+
+    #post-firstinfo
+      display flex
+      color var(--efu-white)
+      text-align left
+      white-space nowrap
+      user-select none
+
+      +maxWidth768()
+        z-index 1
+        align-items center
+        justify-content center
+        width 100%
+        margin 0 auto
+        text-align center
+        white-space normal
+
+      .meta-firstline
+        display flex
+        align-items center
+        height 32px
+
+        +maxWidth768()
+          flex-wrap wrap
+          justify-content center
+          width fit-content
+          max-width 100%
+          height auto
+          margin 0 auto .4rem
+
+        .post-meta-original,
+        span.post-meta-categories
+          height 32px
+          border-radius 99px
+          background var(--efu-white-op)
+          line-height 32px
+          transition .3s
+
+        .post-meta-original
+          display flex
+          width auto
+          margin 0
+          padding 0 .5rem
+          color var(--efu-white)
+          font-size .7rem
+          font-weight 700
+
+          &:hover
+            background var(--efu-white)
+            color var(--efu-main)
+
+        span.post-meta-categories
+          margin-left 8px
+
+          &:hover
+            background var(--efu-white)
+
+            a.post-meta-categories
+              color var(--efu-main)
+
+          a.post-meta-categories
+            display flex
+            width 100%
+            height 100%
+            padding 0 .5rem
+            color var(--efu-white)
+            font-size .7rem
+
+        .tag_share
+          margin-left 1rem
+
+          +maxWidth768()
+            display none
+
+          .post-meta__tag-list
+            display flex
+            flex-direction row
+            align-items center
+
+            &::-webkit-scrollbar
+              display none
+
+            .post-meta__tags
+              display flex
+              flex-direction row
+              align-items center
+              margin-right 8px
+              padding 0 8px 0 4px
+              border-radius 99px
+              color var(--efu-white)
+              opacity .8
+
+              &:hover
+                background var(--efu-white-op)
+                color var(--efu-white)
+                opacity 1
+
+#post
+  #post-info
+    position unset
+    height auto
+    padding 1rem 2rem
+    border-radius 12px 12px 0 0
+    background var(--efu-hovertext)
+
+    +minWidth768()
+      min-height 250px

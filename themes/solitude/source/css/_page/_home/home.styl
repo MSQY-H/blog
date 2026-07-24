@@ -1,0 +1,59 @@
+if hexo-config('hometop.enable') || hexo-config('brevity.enable')
+  #home_top
+    width 100%
+
+.layout#content-inner.layout--home
+  flex-direction column
+  align-items stretch
+  gap .5rem
+  margin-top 0
+
+  > .home-category-bar
+    width 100%
+    max-width 100%
+    align-self stretch
+    flex-shrink 0
+    animation slide-in .6s .3s backwards
+
+.home-layout-row
+  display flex
+  width 100%
+
+  > #home
+    width calc(100% - 300px)
+
+    .hide-aside &
+      width 100%
+
+    +maxWidth1200()
+      width 100%
+
+  +maxWidth1200()
+    display block
+
+@media (max-width: 768px)
+  .layout#content-inner.layout--home
+    padding 0
+    gap .5rem
+
+if hexo-config('hometop.enable')
+  @import "home-top.styl"
+
+if hexo-config('carousel')
+  @import "carousel.styl"
+
+@import "category-bar.styl"
+
+if hexo-config('aside.position') == 0
+  #home
+    order 2
+  #page
+    order 2
+else
+  #home
+    order 1
+  #page
+    order 1
+
+if hexo-config('comment.hot_tip.enable')
+  @import "hot-tip.styl"

@@ -1,0 +1,301 @@
+#console
+  display flex
+  position fixed
+  width 100dvw
+  height 100dvh
+  top 0
+  left 0
+  z-index 9999
+  justify-content center
+  flex-direction column
+  align-items center
+  opacity 0
+  transition .3s ease-out
+  pointer-events none
+  user-select none
+
+  &.show
+    opacity 1
+    pointer-events all
+
+    .console-card-group
+      transform translateY(0)
+      opacity 1
+      transition-delay .1s
+
+    .button-group
+      transform translateY(0)
+      opacity 1
+      transition-delay .2s
+
+    .console-content > *
+      pointer-events auto
+
+    .console-mask
+      backdrop-filter saturate(180%) blur(20px)
+      -webkit-backdrop-filter saturate(180%) blur(20px)
+      animation .6s ease 0s 1 normal none running to_show
+
+  .console-content
+    display flex
+    position relative
+    width 100%
+    max-width calc(100% - 32px)
+    max-height 800px
+    justify-content center
+    flex-direction column
+    align-items center
+    gap 16px
+    pointer-events none
+
+  if hexo-config('recent_comments.enable') && hexo-config('recent_comments.console')
+    .recent-comment-more
+      display flex
+      align-items center
+      margin-left auto
+
+      &:hover
+        color var(--efu-main)
+
+  .console-card-group
+    display flex
+    width 100%
+    height 800px
+    max-height calc(100dvh - 180px)
+    justify-content center
+    align-items center
+    gap 8px
+    opacity 0
+    transform translateY(20px)
+    transition .3s
+
+    +maxWidth768()
+      display none
+
+  .console-card-group-left
+    width 40%
+    max-width 550px
+    height 100%
+
+    +maxWidth900()
+      display none
+
+  .console-card-group-right
+    display flex
+    width 60%
+    max-width 899px
+    height 100%
+    flex-direction column
+    justify-content center
+
+    +maxWidth900()
+      width 100%
+
+  .console-card
+    display flex
+    padding 32px 36px 36px
+    flex-direction column
+    gap 24px
+    background var(--efu-maskbgdeep)
+    border-radius 12px
+    box-shadow var(--efu-shadow-glass)
+
+  .console-card.tags
+    height calc(100% - 163px)
+
+    &:only-child
+      height 100%
+
+    +maxHeight800()
+      height 100%
+
+    .card-tag-cloud
+      display flex
+      flex-wrap wrap
+      align-content flex-start
+      gap 8px
+      overflow-y auto
+      scrollbar-width none
+
+      &::-webkit-scrollbar
+        display none
+
+      a
+        padding 2px 8px
+        color var(--efu-fontcolor)
+        background var(--efu-card-bg)
+        border var(--style-border)
+        border-radius 8px
+        font-size 14px
+        font-weight 700
+        transition .3s
+
+        &:hover
+          color var(--efu-white)
+          background var(--efu-main)
+
+        sup
+          opacity .6
+
+  .console-mask
+    position absolute
+    width 100%
+    height 100%
+    top 0
+    left 0
+    z-index -1
+    background var(--efu-maskbg)
+    backdrop-filter none
+    -webkit-backdrop-filter none
+    backface-visibility hidden
+    -webkit-backface-visibility hidden
+    transform translateZ(0)
+    transform-style preserve-3d
+    -webkit-transform-style preserve-3d
+    transition backdrop-filter .3s, -webkit-backdrop-filter .3s
+
+  .author-content-item-tips
+    margin-bottom 8px
+    opacity .8
+    font-size 10px
+
+  .author-content-item-title
+    display flex
+    align-items center
+    justify-content space-between
+    font-size 28px
+    font-weight 700
+    line-height 1
+
+  .aside-list
+    display flex
+    flex-wrap wrap
+    flex-direction row
+    justify-content space-between
+    margin-top 24px
+
+  .button-group
+    display flex
+    width fit-content
+    justify-content center
+    gap 8px
+    opacity 0
+    transform translateY(20px)
+    transition .3s
+
+    .console-btn-item
+      width 80px
+      height 40px
+      cursor pointer
+      transition .3s
+
+      span
+        display flex
+        width 100%
+        height 100%
+        align-items center
+        justify-content center
+        color var(--efu-fontcolor)
+        background linear-gradient(to bottom, var(--efu-maskbg), var(--efu-maskbgdeep))
+        border var(--style-border)
+        border-radius 60px
+        box-shadow var(--efu-shadow-glass)
+        transition .3s
+
+        i
+          font-size 16px
+
+      span.darkmode_switchbutton
+        [data-theme="dark"] &
+          color var(--efu-white)
+          background var(--efu-orange)
+
+      &.on span
+        color var(--efu-white)
+        background var(--efu-orange)
+
+      &:hover span
+        color var(--efu-white)
+        background var(--efu-main)
+
+  .console-card.history
+    height 154px
+    margin-top 8px
+    padding 0
+    background transparent
+    border none
+    border-radius 0
+    box-shadow none
+
+    +maxHeight800()
+      display none
+
+    .item-headline
+      display none
+
+    .card-archive-list
+      display flex
+      height 154px
+      flex-direction row
+      flex-wrap wrap
+      align-content space-between
+      gap 8px
+
+      li.item
+        height 72px
+        flex 1 1 calc(25% - 6px)
+
+      a
+        display flex
+        height 100%
+        padding 8px 16px
+        flex-direction column
+        align-content space-between
+        color var(--efu-fontcolor)
+        background linear-gradient(to bottom, var(--efu-maskbg), var(--efu-maskbgdeep))
+        border var(--style-border)
+        border-radius 8px
+        box-shadow var(--efu-shadow-glass)
+        transition .3s
+
+        &:hover
+          color var(--efu-white)
+          background var(--efu-main)
+          cursor pointer
+
+        .date
+          opacity .6
+          font-size 14px
+
+        .count-group
+          display flex
+          flex-direction row
+
+          .count
+            width auto
+            margin-right 2px
+            text-align left
+            font-size 18px
+            font-weight 700
+            line-height .9
+
+          .unit
+            width auto
+            text-align left
+            font-size 14px
+            font-weight 700
+
+  #card-newest-comments
+    height 100%
+
+  #consoleMusic,
+  #consoleCommentBarrage
+    +maxWidth1300()
+      display none
+
+    +maxHeight800()
+      display none
+
+  #consoleHideAside
+    +maxWidth768()
+      display none

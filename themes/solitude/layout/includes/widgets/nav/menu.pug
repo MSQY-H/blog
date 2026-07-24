@@ -1,0 +1,22 @@
+- var menu = theme.nav.menu
+
+if menu
+    .menus_items
+        each value, label in menu
+            .menus_item
+                if typeof value !== 'object'
+                    a.site-page(href=url_for(value))
+                        span= label
+                else
+                    a.site-page(href="javascript:void(0);")
+                        span= label
+                    ul.menus_item_child
+                        each childValue, childLabel in value
+                            li
+                                - var array = childValue.split('||')
+                                - var childUrl = trim(array[0])
+                                - var isTravelling = childUrl === 'javascript:travelling()'
+                                a.site-page.child(href=isTravelling ? 'javascript:void(0);' : url_for(childUrl), data-solitude-action=isTravelling ? 'travelling' : null, data-solitude-prevent=isTravelling ? 'true' : null)
+                                    if array[1]
+                                        i.solitude(class=array[1])
+                                    span= childLabel

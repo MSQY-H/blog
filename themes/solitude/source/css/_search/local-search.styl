@@ -1,0 +1,270 @@
+html.search-open
+  overflow hidden
+
+.search-dialog
+  position fixed
+  inset 0
+  z-index 1001
+  display none
+  margin auto
+  padding 1rem
+  width 30rem
+  height fit-content
+  max-height 90dvh
+  overflow hidden
+  box-shadow var(--efu-shadow-lightblack)
+  background var(--efu-card-bg)
+  border var(--style-border)
+  border-radius 12px
+  transition .3s
+  animation slide-in .6s ease 0s 1 normal none running
+  gap 16px
+  flex-direction column
+
+  &:hover
+    border var(--style-border-hover)
+    box-shadow var(--efu-shadow-theme)
+
+  .search-dialog-title
+    color var(--efu-main)
+    font-size 1.4em
+    font-weight 700
+    line-height 1
+
+  .search-close-button
+    display inline-flex
+    align-items center
+    justify-content center
+    flex 0 0 32px
+    width 32px
+    height 32px
+    margin-left 4px
+    padding 4px
+    color var(--efu-gray)
+    background transparent
+    border 0
+    border-radius 50%
+    font-size 1.4em
+    line-height 1
+    cursor pointer
+    transition color .2s ease-in-out, background .2s ease-in-out
+
+    &:hover
+      color var(--efu-main)
+      background var(--efu-main-op)
+
+  .search-wrap
+    display flex
+    min-height 0
+    overflow hidden
+    flex-direction column
+    gap 16px
+
+  .search-box
+    position relative
+    width 100%
+    max-width 100%
+    margin 0 auto
+
+    input
+      width 100%
+      height 44px
+      padding .25rem .7rem
+      outline 0
+      color var(--efu-fontcolor)
+      background var(--efu-secondbg)
+      border var(--style-border)
+      border-radius 12px
+      caret-color var(--efu-theme)
+
+      &:focus
+        border var(--style-border-hover)
+
+      &::placeholder
+        color var(--efu-gray)
+        opacity .8
+
+  #search-suggestions
+    display flex
+    flex-wrap wrap
+    gap 8px
+
+    &[hidden]
+      display none
+
+    .tag-list
+      min-height 30px
+      padding 3px 8px
+      color var(--efu-fontcolor)
+      background transparent
+      border var(--style-border-always)
+      border-radius 8px
+      line-height 1.2
+      cursor pointer
+      transition color .2s ease-in-out, background .2s ease-in-out, border-color .2s ease-in-out
+
+      &:hover,
+      &:focus-visible
+        color var(--efu-white)
+        background var(--efu-main)
+        border-color var(--efu-main)
+        outline 0
+
+  #search-results
+    display flex
+    max-height calc(90dvh - 250px)
+    min-height 0
+    margin 0
+    padding 0
+    overflow-y auto
+    flex 1
+    flex-direction column
+    list-style none
+
+    &[hidden]
+      display none
+
+    .search-result-item
+      width 100%
+      padding-left 0
+      font-weight 700
+      line-height 1.5
+
+      .search-result-title
+        display block
+        position relative
+        width 100%
+        padding 3px 0
+        overflow hidden
+        color var(--efu-fontcolor)
+        white-space nowrap
+        text-overflow ellipsis
+        transition color .2s ease-in-out
+
+        &:hover
+          color var(--efu-hovertext)
+
+        em
+          color var(--efu-theme)
+          font-style normal
+
+    .search-result-empty,
+    .search-result-error,
+    .search-result-loading
+      color var(--efu-secondtext)
+
+  #search-pagination
+    &:empty
+      display none
+
+    .pagination-list
+      display flex
+      justify-content center
+      gap 8px
+      margin 0
+      padding 0
+      list-style none
+
+    .pagination-button
+      display inline-flex
+      align-items center
+      justify-content center
+      min-width 1.2rem
+      height 1.2rem
+      padding 0
+      color var(--efu-fontcolor)
+      background transparent
+      border 0
+      border-radius 4px
+      cursor pointer
+
+      &:hover
+        color var(--efu-main)
+
+      &.select
+        color var(--efu-white)
+        background var(--efu-main)
+        cursor default
+
+  #search-tips
+    width 100%
+    color var(--efu-secondtext)
+
+    &:empty
+      display none
+
+    .search-result-count
+      color var(--efu-gray)
+      font-size 12px
+
+      b
+        color var(--efu-main)
+
+  #search-ai-tips
+    display flex
+    align-items center
+    width 100%
+    min-height 42px
+    padding 8px 12px
+    gap 10px
+    color var(--efu-fontcolor)
+    border var(--style-border-always)
+    border-radius 12px
+
+    > i
+      flex 0 0 auto
+      font-size 18px
+
+    .search-ai-text
+      min-width 0
+      flex 1
+      line-height 1.35
+
+    .search-ai-recommend
+      flex 0 0 auto
+      padding 2px 8px
+      color var(--efu-white)
+      background var(--efu-green)
+      border-radius 8px
+      font-size 12px
+      line-height 20px
+
+    &:hover
+      color var(--efu-main)
+      border-color var(--efu-main)
+
+.search-nav
+  display flex
+  align-items center
+  justify-content space-between
+
+#search-mask
+  position fixed
+  inset 0
+  z-index 1000
+  display none
+  background var(--efu-maskbgdeep)
+  backdrop-filter blur(12px)
+  -webkit-backdrop-filter blur(12px)
+  transform translateZ(0)
+
+@media screen and (max-width: 767px)
+  .search-dialog
+    inset 0
+    width 100vw
+    height var(--search-height, 100dvh)
+    max-height none
+    margin 0
+    border 0
+    border-radius 0
+
+    &:hover
+      border 0
+      box-shadow var(--efu-shadow-lightblack)
+
+    .search-wrap
+      flex 1
+
+    #search-results
+      max-height none
+      flex 1

@@ -1,0 +1,112 @@
+- page.type = is_post() ? 'post' : page.type
+- const bodyFriendLinksGroups = site.data.links && Array.isArray(site.data.links.links) ? site.data.links.links : []
+- const bodyFriendLinksTotal = bodyFriendLinksGroups.reduce((count, group) => count + (Array.isArray(group.link_list) ? group.link_list.length : 0), 0)
+- const configuredBodyFriendLinksThreshold = Number(theme.page && theme.page.links && theme.page.links.async_threshold)
+- const bodyFriendLinksThreshold = Number.isInteger(configuredBodyFriendLinksThreshold) && configuredBodyFriendLinksThreshold >= 0 ? configuredBodyFriendLinksThreshold : 200
+- const bodyFriendLinksAsync = bodyFriendLinksTotal > bodyFriendLinksThreshold
+
+mixin katex
+  if theme.katex.copytex
+    script(src=url_for(theme.cdn.katex_copytex))
+      script.
+        (() => {
+          document.querySelectorAll('.article-container span.katex-display').forEach(item => {
+            Solitude.wrap(item, 'div', {class: 'katex-wrap'})
+          })
+        })();
+
+div
+  // Critical scripts loaded synchronously
+  script(src=url_for(theme.cdn.utils))
+  
+  // Non-critical scripts loaded asynchronously
+  script(defer src=url_for(theme.cdn.waterfall))
+  script(src=url_for(theme.cdn.pjax))
+
+  // Feature-specific scripts loaded asynchronously
+  if theme.post.share.enable && theme.post.share.list && theme.post.share.list.includes('qrcode')
+    script(async src=url_for(theme.cdn.qrcode))
+
+  if theme.mermaid
+    script(defer src=url_for(theme.cdn.mermaid_js))
+
+  if theme.chart
+    script(defer src=url_for(theme.cdn.chart_js))
+
+  if theme.typeit || typeof theme.hometop.banner.desc === 'object'
+    script(defer src=url_for(theme.cdn.typeit_js))
+
+  if theme.display_mode.universe
+    script(defer src=url_for(theme.cdn.universe_js))
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof dark === 'function') dark();
+      });
+
+  if theme.katex && theme.katex.enable
+    if theme.katex.per_page && (is_post() || is_page())
+      +katex
+    else if page.katex
+      +katex
+
+  // UI enhancement scripts
+  if theme.lazyload.enable
+    script(src=url_for(theme.cdn.lazyload))
+  script(defer src=url_for(theme.cdn.snackbar))
+  if theme.lightbox
+    if theme.mediumZoom
+      script(src=url_for(theme.cdn.medium_zoom))
+    if theme.fancybox
+      script(src=url_for(theme.cdn.fancyapps_ui))
+  if (theme.brevity.home_mini && theme.brevity.enable)
+    script(src=url_for(theme.cdn.swiper_js))
+
+  // Music player scripts
+  if theme.capsule.enable || theme.music.enable || theme.brevity.enable && theme.brevity.music
+    script.
+      var meting_api = '!{theme.meting_api}';
+    script(defer src=url_for(theme.cdn.aplayer_js))
+    script(defer src=url_for(theme.cdn.meting_js))
+
+  // Cover color processing scripts
+  if theme.post.covercolor.enable && theme.post.covercolor.mode === 'local'
+    script(defer src=url_for(theme.cdn.color_thief))
+
+  if theme.loading.pace
+    include ../mixins/pace.pug
+
+  // Search functionality
+  if theme.search.enable && theme.search.type === "algolia"
+    script(defer src=url_for(theme.cdn.instantsearch))
+
+  // Main module dynamically imports enabled first-party features.
+  script(type="module" src=url_for(theme.cdn.main))
+
+  if theme.extends.body
+    each item in theme.extends.body
+      != item
+
+  .js-pjax
+    if is_home() && theme.brevity.enable && theme.brevity.home_mini
+      script.
+        Solitude.initbbtalk()
+    if page.type === 'brevity' && theme.brevity.enable
+      script.
+        Solitude.config.lightbox && Solitude.lightbox(document.querySelectorAll(".bber-content-img img"));
+        Solitude.changeTimeFormat(document.querySelectorAll('.bber-info-time time'))
+    if page.comment
+      include ../widgets/third-party/comments/js
+    if theme.mermaid
+      script.
+        mermaid.run();
+
+    if theme.busuanzi && (theme.aside.siteinfo.uv || theme.aside.siteinfo.pv || is_post() && theme.post.meta.pv)
+      script(defer pjax src=url_for(theme.cdn.busuanzi_js))
+
+
+
+// pjax
+!= partial("includes/widgets/third-party/pjax", {}, {cache: true})
+
+// google adsense
+include ../body/gadsense

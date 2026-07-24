@@ -1,0 +1,228 @@
+-
+    if (theme.search.enable) {
+        var localSearch = null;
+        var algolia = null;
+        switch (theme.search.type) {
+            case 'local':
+                localSearch = {
+                    preload: theme.search.local.preload,
+                    path: theme?.search?.local?.CDN || '/search.xml'
+                };
+                break;
+            case 'algolia':
+                algolia = {
+                    appId: config.algolia.appId || config.algolia.applicationID,
+                    apiKey: config.algolia.apiKey,
+                    indexName: config.algolia.indexName,
+                    hits: {
+                        per_page: theme?.search?.algolia?.hits?.per_page || 10
+                    }
+                };
+                break;
+        }
+    }
+
+    const witty_words = theme.aside?.my_card?.witty_words || [];
+    const [hello_prefix, hello_back] = [_p('aside.hello'), _p('aside.back')];
+
+    let comment = false
+
+    if (theme.comment.use && theme.comment.commentBarrage) {
+        comment = {
+            avatar: theme.comment.avatar,
+            commentBarrage: theme.comment.commentBarrage,
+        }
+    }
+
+    let copyright = false;
+    if (theme.copy.enable && theme.copy.copyright.enable) {
+        copyright = {
+            limit: theme.copy.copyright.limit,
+            author: _p("copy_copyright.author") + ': ' + config.author,
+            link: _p("copy_copyright.link") + ': ',
+            source: _p("copy_copyright.source") + ': ' + config.title,
+            info: _p("copy_copyright.info")
+        }
+    }
+
+    let lang = false
+    lang = {
+        theme: {
+            dark: _p('theme.dark'),
+            light: _p('theme.light'),
+        },
+        copy: {
+            success: _p('copy.success'),
+            error: _p('copy.error'),
+        },
+        backtop: _p('nav.backtop'),
+        time: {
+            day: _p('time.day'),
+            hour: _p('time.hour'),
+            just: _p('time.just'),
+            min: _p('time.min'),
+            month: _p('time.month')
+        },
+        day: _p('day'),
+        f12: _p('f12'),
+        totalk: _p('totalk')
+    }
+
+    if (theme.search.enable) {
+        lang.search = {
+            empty: _p('search.empty'),
+            hit: _p('search.hit'),
+            placeholder: _p('search.placeholder'),
+            count: _p('search.count'),
+            loading: _p('search.load'),
+        }
+    }
+
+    if (theme.comment.use && theme.comment.commentBarrage) {
+        lang.barrage = {
+            title: _p('commentBarrage.title'),
+        }
+    }
+
+    let rightMenu = false
+    if (theme.right_menu.enable) {
+        rightMenu = {
+            mode: {
+                dark: _p('right_menu.light'),
+                light: _p('right_menu.dark'),
+            },
+            img_error: _p('right_menu.img_error')
+        }
+        if (theme.capsule.enable) {
+            rightMenu.music = {
+                start: _p('right_menu.music.start'),
+                stop: _p('right_menu.music.stop'),
+            }
+        }
+        if (theme.comment.use && theme.comment.commentBarrage) {
+            rightMenu.barrage = {
+                open: _p('right_menu.barrage.open'),
+                close: _p('right_menu.barrage.close')
+            }
+        }
+        if (theme.translate.enable) {
+            rightMenu.translate = theme.right_menu.translate
+        }
+        if (theme.right_menu.ctrlOriginalMenu)
+            rightMenu.ctrlOriginalMenu = _p('right_menu.ctrl_original_menu')
+    }
+
+    let translate = false
+    if (theme.translate.enable) {
+        translate = {
+            translateDelay: theme.translate.translateDelay,
+            defaultEncoding: theme.translate.defaultEncoding
+        }
+    }
+
+    let highlight = false
+    if (theme.highlight.enable) {
+        highlight = {
+            limit: theme.highlight.limit,
+            expand: theme.highlight.expand,
+            copy: theme.highlight.copy,
+            syntax: config.syntax_highlighter
+        }
+    }
+
+    let lure = false
+    if (theme.lure.enable) {
+        lure = {
+            jump: theme.lure.jump,
+            back: theme.lure.back,
+        }
+    }
+
+    let expire = false
+    if (theme.expire.enable) {
+        expire = {
+            time: theme.expire.time,
+            position: theme.expire.position,
+            text_prev: theme.expire.text_prev,
+            text_next: theme.expire.text_next,
+        }
+    }
+
+    const friendLinksGroups = site.data.links && Array.isArray(site.data.links.links) ? site.data.links.links : []
+    const friendLinksTotal = friendLinksGroups.reduce((count, group) => count + (Array.isArray(group.link_list) ? group.link_list.length : 0), 0)
+    const configuredFriendLinksThreshold = Number(theme.page && theme.page.links && theme.page.links.async_threshold)
+    const friendLinksThreshold = Number.isInteger(configuredFriendLinksThreshold) && configuredFriendLinksThreshold >= 0 ? configuredFriendLinksThreshold : 200
+    const friendLinks = {
+        async: friendLinksTotal > friendLinksThreshold,
+        path: url_for('/links.json'),
+        total: friendLinksTotal,
+        placeholder: theme.lazyload.placeholder ? url_for(theme.lazyload.placeholder) : '',
+        default_avatar: url_for('/img/default_avatar.avif'),
+        more_url: url_for('/links/'),
+        loading: _p('link.loading'),
+        error: _p('link.error'),
+        retry: _p('link.retry'),
+        random: _p('link.random'),
+        to: _p('link.to'),
+        more: _p('more'),
+        default_sort: _p('link.default_sort'),
+        random_sort: _p('link.random_sort'),
+        sort_label: _p('link.sort_label'),
+        scroll_left: _p('link.scroll_left'),
+        scroll_right: _p('link.scroll_right')
+    }
+
+-
+    const globalConfig = {
+        root: config.root,
+        algolia,
+        localsearch: localSearch,
+        runtime: theme.aside.siteinfo.runtimeenable ? theme.aside.siteinfo.runtime : false,
+        lazyload: {
+            enable: theme.lazyload.enable,
+            error: theme.lazyload.errorimg
+        },
+        copyright,
+        highlight,
+        friend_links: friendLinks,
+        random_posts: site.posts.filter(post => post.random !== false).map(post => post.path),
+        randomlink: theme.footer.randomlink,
+        feature_modules: {
+            search: theme.search.enable ? theme.search.type : false,
+            post_ai: theme.post.ai.enable,
+            friend_links: friendLinks.total > 0,
+            music: theme.capsule.enable || theme.music.enable || (theme.brevity.enable && theme.brevity.music),
+            right_menu: theme.right_menu.enable,
+            translate: theme.translate.enable,
+            covercolor: theme.post.covercolor.enable ? theme.post.covercolor.mode : false
+        },
+        lang,
+        aside: {
+            state: {
+                morning: theme.aside.my_card.state.morning,
+                noon: theme.aside.my_card.state.noon,
+                afternoon: theme.aside.my_card.state.afternoon,
+                night: theme.aside.my_card.state.night,
+                goodnight: theme.aside.my_card.state.goodnight
+            },
+            witty_words,
+            witty_comment: {
+                prefix: hello_prefix,
+                back: hello_back
+            }
+        },
+        covercolor: {
+            enable: theme.post.covercolor.enable,
+            mode: theme.post.covercolor.mode,
+            api: theme.post.covercolor.api,
+            time: theme.post.covercolor.time
+        },
+        comment,
+        lightbox: theme.mediumZoom ? "mediumZoom" : (theme.fancybox ? "fancybox" : null),
+        right_menu: rightMenu,
+        translate,
+        lure,
+        expire
+    };
+
+template#site-config!= JSON.stringify(globalConfig).replace(/</g, '\\u003c')

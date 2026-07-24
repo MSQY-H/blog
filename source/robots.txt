@@ -1,0 +1,8 @@
+User-agent: *
+
+Allow: /
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /tags/
+
+Sitemap: https://www.msqy.cc.cd/sitemap.xml

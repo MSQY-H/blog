@@ -1,0 +1,21 @@
+#local-search
+    div.search-dialog(role="dialog" aria-modal="true" aria-labelledby="local-search-title")
+        nav.search-nav
+            span.search-dialog-title#local-search-title=__('nav.search')
+            button.search-close-button(type="button" aria-label=__('search.close'))
+                i.solitude.fas.fa-xmark
+        div.search-wrap
+            div.search-box
+                input.search-box-input#search-input(type="search" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder=__('search.placeholder') aria-label=__('search.placeholder'))
+            div#search-suggestions(aria-label=__('search.suggestions'))
+                each tag in theme.search.tags || []
+                    button.tag-list(type="button" data-query=tag)=tag
+            ul#search-results(hidden)
+            div#search-pagination
+            div#search-tips
+            if theme.search.ai && theme.search.ai.enable && theme.search.ai.url
+                a#search-ai-tips(href=url_for(theme.search.ai.url) target="_blank" rel="external nofollow noopener noreferrer" title=__('search.ai_title'))
+                    i.solitude.fas.fa-brain(aria-hidden="true")
+                    span.search-ai-text=__('search.ai_text')
+                    span.search-ai-recommend=__('search.ai_recommend')
+    div#search-mask

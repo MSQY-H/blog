@@ -1,0 +1,221 @@
+#pagination:not(.pagination-post)
+  width 100%
+  overflow visible
+
+  .pagination
+    position relative
+    display flex
+    align-items center
+    justify-content center
+    gap 8px
+    text-align center
+
+  .page-number:focus-visible,
+  .extend:focus-visible,
+  #toPageText:focus-visible
+    outline 2px solid var(--efu-theme)
+    outline-offset 2px
+
+  @media screen and (min-width: 769px)
+    .page-number
+      display block
+      flex 0 0 40px
+      width 40px
+      min-width 40px
+      height 40px
+      margin 0
+      padding 0
+      color var(--efu-fontcolor)
+      line-height 38px
+      background var(--efu-card-bg)
+      border var(--style-border)
+      border-radius 99px
+      box-shadow var(--efu-shadow-border)
+      cursor pointer
+      transition .3s
+
+      &:hover
+        color var(--efu-theme)
+        border-color var(--efu-theme)
+        box-shadow var(--efu-shadow-main)
+
+      &.current
+        color var(--efu-nav-hover-text)
+        background var(--efu-theme)
+        border-color var(--efu-theme)
+        box-shadow var(--efu-shadow-theme)
+        cursor default
+
+        &:hover
+          color var(--efu-nav-hover-text)
+          background var(--efu-theme)
+          border-color var(--efu-theme)
+          box-shadow var(--efu-shadow-theme)
+
+    .space
+      display block
+      flex 0 0 16px
+      width 16px
+      height 40px
+      margin 0
+      color var(--efu-fontcolor)
+      line-height 32px
+
+    a.extend.next,
+    a.extend.prev
+      position absolute
+      display flex
+      align-items center
+      justify-content center
+      width 80px
+      min-width 80px
+      height 40px
+      margin 0
+      padding 0
+      color var(--efu-fontcolor)
+      line-height 38px
+      background var(--efu-card-bg)
+      border var(--style-border)
+      border-radius 99px
+      box-shadow var(--efu-shadow-border)
+      overflow hidden
+      transition .3s
+
+      i
+        transition .3s
+
+    a.extend
+      &:hover
+        color var(--efu-theme)
+        background var(--efu-card-bg)
+        border-color var(--efu-theme)
+        box-shadow var(--efu-shadow-main)
+
+      &.prev
+        left 0
+
+        .pagination_tips_prev
+          margin-right -32px
+          opacity 0
+          transition .3s ease-out
+
+        &:hover .pagination_tips_prev
+          margin-right 2px
+          opacity 1
+          white-space nowrap
+
+      &.next
+        right 0
+
+        .pagination_tips_next
+          margin-left -32px
+          opacity 0
+          transition .3s ease-out
+
+        &:hover .pagination_tips_next
+          margin-left 2px
+          opacity 1
+          white-space nowrap
+
+    .toPageGroup
+      position relative
+      display flex
+      flex 0 0 40px
+      width 40px
+      height 40px
+      margin 0
+
+      input
+        width 40px
+        height 40px
+        padding-left 12px
+        color var(--efu-fontcolor)
+        font-size 16px
+        background var(--efu-secondbg)
+        border var(--style-border-always)
+        border-radius 99px
+        outline none
+        transition .3s
+
+        &:focus
+          width 100px
+          border-color var(--efu-theme)
+
+      &:hover input
+        width 100px
+        border-color var(--efu-theme)
+
+      a#toPageButton
+        position absolute
+        top 0
+        right 0
+        display flex
+        align-items center
+        justify-content center
+        width 40px
+        height 40px
+        color var(--efu-fontcolor)
+        background var(--efu-card-bg)
+        border var(--style-border-always)
+        border-radius 99px
+        cursor text
+        pointer-events none
+        transition .3s
+
+        &.haveValue
+          cursor pointer
+          pointer-events auto
+
+          &:hover
+            color var(--efu-nav-hover-text)
+            background var(--efu-theme)
+            opacity 1
+
+      &:hover a#toPageButton,
+      &:focus-within a#toPageButton
+        top 5px
+        right 4px
+        width 30px
+        height 30px
+        background var(--efu-card-bg)
+        border-color transparent
+        border-radius 99px
+        opacity .2
+
+  +maxWidth768()
+    margin 0
+
+    .pagination
+      gap 10px
+      margin 0
+
+      .extend
+        position static
+        display flex
+        flex 1 1 0
+        align-items center
+        justify-content center
+        width 100%
+        min-width 0
+        height 50px
+        margin 0
+        padding 0
+        color var(--efu-fontcolor)
+        line-height 50px
+        background var(--efu-card-bg)
+        border var(--style-border-always)
+        border-radius 12px
+        box-shadow var(--efu-shadow-border)
+
+        &:hover
+          color var(--efu-nav-hover-text)
+          background var(--efu-theme)
+          border-color var(--efu-theme)
+
+        i
+          display none
+
+    .page-number,
+    .space,
+    .toPageGroup
+      display none

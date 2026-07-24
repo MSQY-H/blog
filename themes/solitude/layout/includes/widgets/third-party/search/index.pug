@@ -1,0 +1,9 @@
+if theme.search.enable
+    case theme.search.type
+        when 'algolia'
+            include algolia-search
+        when 'local'
+            include local-search
+        when 'docsearch'
+            include docsearch
+            link(rel="stylesheet" href=url_for(theme.cdn.docsearch_css))

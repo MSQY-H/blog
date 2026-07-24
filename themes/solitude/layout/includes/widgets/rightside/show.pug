@@ -1,0 +1,16 @@
+.rs_show
+    if theme.rightside.hide.enable
+        button.config(type='button' title=_p('rightside.show.gear') heotip=_p('rightside.show.gear') data-solitude-action='toggleTargetClass' data-solitude-target='.rs_hide')
+            i.fas.fa-gear
+    if showToc
+        button.mobile.toc(type='button' title=_p('rightside.show.toc') heotip=_p('rightside.show.toc') data-solitude-action='toggleTargetClass' data-solitude-target='#card-toc' data-solitude-class='open')
+            i.fas.fa-list
+    if page.comment
+        button.comment(type='button' title=_p('rightside.show.comment') heotip=_p('rightside.show.comment') data-solitude-action='scrollTo' data-solitude-target='post-comment')
+            i.fas.fa-comment
+    if theme.comment.commentBarrage && page.comment
+        button.barrage.pc(type='button' title=_p('rightside.show.barrage') heotip=_p('rightside.show.barrage') data-solitude-action='switchCommentBarrage')
+            span= _p('rightside.show.barrage')
+    button.top(type='button' title=_p('rightside.show.top') heotip=_p('rightside.show.top') data-solitude-action='toTop')
+        i.fas.fa-arrow-up
+        span#percent= "0"

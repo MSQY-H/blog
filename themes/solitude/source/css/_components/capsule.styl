@@ -1,0 +1,343 @@
+@keyframes capsuleCoverSpin
+  from
+    transform: rotate(0deg) scale(1.1)
+  to
+    transform: rotate(360deg) scale(1.1)
+
+@keyframes capsulePlayingShadow
+  0%, 100%
+    box-shadow: 0 0 12px -6px var(--efu-none)
+  50%
+    box-shadow: 0 0 12px -3px var(--efu-music)
+
+#nav-music
+  display: flex
+  align-items: center
+  position: fixed
+  left: 20px
+  bottom: 20px
+  z-index: 12
+  width: fit-content
+  max-width: calc(100vw - 40px)
+  overflow: hidden
+  isolation: isolate
+  cursor: pointer
+  border-radius: 40px
+  transform-origin: left bottom
+  transition: box-shadow 0.3s, opacity 0.3s, transform 0.3s
+  box-shadow: var(--efu-shadow-border)
+
+  &,
+  div,
+  span
+    user-select: none
+
+  .aplayer-button
+    display: none
+
+  #nav-music-hoverTips
+    position: absolute
+    inset: 0
+    z-index: 2
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 100%
+    gap: 12px
+    color: var(--efu-white)
+    background: unquote('color-mix(in srgb, var(--efu-music) 50%, transparent)')
+    border-radius: 40px
+    opacity: 0
+    pointer-events: none
+    transition: opacity 0.3s, background 0.3s, width 0.3s, padding 0.3s
+
+    .music-control-btn
+      display: none
+      align-items: center
+      justify-content: center
+      width: 20px
+      height: 40px
+      padding: 0
+      color: var(--efu-white)
+      background: transparent
+      border: 0
+      font-size: 16px
+      line-height: 40px
+      opacity: 0.8
+      cursor: pointer
+      transition: opacity 0.2s, transform 0.2s
+
+      &:hover,
+      &:focus-visible
+        opacity: 1
+
+      &:active
+        transform: scale(0.85)
+
+      &:focus-visible
+        outline: 2px solid var(--efu-white)
+        outline-offset: -3px
+        border-radius: 20px
+
+  &:hover #nav-music-hoverTips
+    opacity: 1
+    pointer-events: auto
+
+  &:not(.playing):hover
+    #nav-music-hoverTips
+      backdrop-filter: blur(10px)
+      -webkit-backdrop-filter: blur(10px)
+
+    #music-play
+      display: flex
+
+  &.playing
+    animation: capsulePlayingShadow 5s linear infinite
+
+    #nav-music-hoverTips
+      left: auto
+      right: 0
+      width: 180px
+      padding-right: 20px
+      justify-content: flex-end
+      background: linear-gradient(to left, var(--efu-music) 60%, transparent)
+
+    &:hover
+      #music-prev,
+      #music-pause,
+      #music-next
+        display: flex
+
+  .aplayer
+    display: block
+    position: relative
+    width: fit-content
+    min-width: 122px
+    max-width: calc(100vw - 40px)
+    height: 46px
+    max-height: 46px
+    margin: 0
+    padding: 0
+    overflow: hidden
+    color: var(--efu-fontcolor)
+    background: linear-gradient(to bottom, var(--efu-maskbg), var(--efu-maskbgdeep))
+    border: var(--style-border)
+    border-radius: 60px
+    box-shadow: var(--efu-shadow-glass-inset)
+    backdrop-filter: saturate(180%) blur(20px)
+    -webkit-backdrop-filter: saturate(180%) blur(20px)
+    transform: translateZ(0)
+    transition: background 0.28s, border-color 0.28s, box-shadow 0.28s
+
+    &,
+    *
+      box-sizing: border-box
+
+    .aplayer-notice,
+    .aplayer-miniswitcher,
+    .aplayer-list
+      display: none
+
+    .aplayer-body
+      display: flex
+      align-items: center
+      position: relative
+      width: auto
+      height: 46px
+      min-height: 46px
+      max-height: 46px
+      padding: 8px 16px 8px 8px
+      overflow: hidden
+      border-radius: 60px
+
+    .aplayer-pic
+      position: relative
+      z-index: 1
+      float: none
+      flex-shrink: 0
+      width: 30px
+      height: 30px
+      margin: 0
+      pointer-events: none
+      border: var(--style-border-always)
+      border-radius: 40px
+      transform: rotate(0deg) scale(1)
+      transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s
+
+    .aplayer-info
+      display: flex
+      align-items: center
+      align-self: center
+      position: static
+      flex: 0 0 auto
+      width: max-content
+      max-width: 120px
+      height: 30px
+      min-height: 30px
+      margin: 0 0 0 10px
+      padding: 0
+      overflow: visible
+      color: var(--efu-fontcolor)
+      border: 0 !important
+      transition: max-width 0.28s, color 0.28s
+
+      .aplayer-music
+        display: flex
+        align-items: center
+        position: relative
+        z-index: 1
+        flex-shrink: 0
+        height: 30px
+        min-height: 30px
+        margin: 0
+        padding: 0
+        line-height: 30px
+        overflow: hidden
+
+        .aplayer-title
+          display: block
+          max-width: 120px
+          height: 30px
+          line-height: 30px
+          overflow: hidden
+          color: var(--efu-fontcolor)
+          font-size: 14px
+          white-space: nowrap
+          text-overflow: ellipsis
+          cursor: pointer
+          transition: color 0.28s
+
+        .aplayer-author
+          display: none
+
+      .aplayer-controller
+        display: block
+        position: absolute
+        inset: 0
+        z-index: 0
+        width: 100%
+        height: 100%
+
+        .aplayer-bar-wrap
+          position: absolute
+          inset: 0
+          width: 100%
+          height: 100%
+          margin: 0
+          padding: 0
+
+          .aplayer-bar
+            position: relative
+            width: 100%
+            height: 100%
+            background: transparent
+            opacity: 0
+            transition: opacity 0.3s
+
+            .aplayer-loaded
+              display: none
+
+            .aplayer-played
+              position: absolute
+              top: 0
+              bottom: 0
+              left: 0
+              height: 100%
+              background-color: var(--efu-white) !important
+              opacity: 0.15
+
+      .aplayer-time
+        display: none
+
+    .aplayer-lrc
+      display: block
+      flex-shrink: 0
+      width: 230px
+      max-width: 0
+      height: 18px
+      min-height: 18px
+      margin: 0
+      padding: 0
+      overflow: hidden
+      opacity: 0
+      transition: max-width 0.28s, margin 0.28s, opacity 0.28s
+
+      &:after,
+      &:before
+        display: none
+
+      .aplayer-lrc-contents
+        width: 100%
+
+      p
+        width: 100%
+        height: 16px !important
+        min-height: 16px
+        margin: 0 !important
+        padding: 0 !important
+        overflow: hidden
+        color: var(--efu-white)
+        font-size: 14px
+        line-height: 16px !important
+        text-align: left
+        white-space: nowrap
+        text-overflow: ellipsis
+        opacity: 0.35
+        filter: none
+
+        &.aplayer-lrc-current
+          color: var(--efu-white)
+          border: 0
+          opacity: 1
+          filter: none
+
+  &:not(.playing):hover .aplayer
+    color: var(--efu-white)
+    background: unquote('color-mix(in srgb, var(--efu-music) 78%, transparent)')
+    border-color: var(--efu-music)
+
+    .aplayer-info,
+    .aplayer-title
+      color: var(--efu-white)
+
+  &.playing
+    .aplayer
+      color: var(--efu-white)
+      background: var(--efu-music)
+      border-color: var(--efu-music)
+      box-shadow: unquote('var(--efu-shadow-glass-inset), 0 0 26px color-mix(in srgb, var(--efu-music) 42%, transparent)')
+
+      .aplayer-pic
+        border-color: var(--efu-card-bg)
+        box-shadow: 0 0 14px var(--efu-card-bg)
+        animation: capsuleCoverSpin 24s linear infinite
+
+      .aplayer-info
+        max-width: unquote('min(332px, calc(100vw - 120px))')
+        color: var(--efu-white)
+
+      .aplayer-title
+        color: var(--efu-white) !important
+
+      .aplayer-bar
+        opacity: 1
+
+      .aplayer-lrc
+        max-width: 230px
+        margin-left: 12px
+        opacity: 1
+
+@media (hover: none)
+  #nav-music.playing #nav-music-hoverTips
+    opacity: 1
+    pointer-events: auto
+
+    #music-prev,
+    #music-pause,
+    #music-next
+      display: flex
+
+.aplayer-thumb
+  width: 0 !important
+  height: 0 !important
