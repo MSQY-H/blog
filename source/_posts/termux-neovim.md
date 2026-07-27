@@ -77,7 +77,7 @@ pkg i neovim
 
 LazyVim 官方教程已经很详细了，如果需要更多支持，建议查询官方教程：
 
-{% link 'LazyVim - Getting Started' 'LazyVim is a Neovim setup …' 'https://www.lazyvim.org/' %}
+{% link 'LazyVim - Getting…' 'LazyVim is a Neovim setup …' 'https://www.lazyvim.org/' %}
 
 如果用的是普通手机（遥控器比例），官方 LazyVim 可能适配的不是很好，我找到了为 Termux 定制的 LazyVim，我在这里会用该 LazyVim 的脚本来配置。
 
@@ -170,6 +170,10 @@ local dashboard_custom_header17 = {
   " ",
 }
 ```
+
+字符画的生成可以使用这个网站，网站提供很多样式。你可以将生成的字符画发给 AI，让 AI 帮你把字符画转成这个变量的格式。
+
+{% link 'Text to ASCII…' 'An online text conversion …' 'http://patorjk.com/software/taag/' %}
 
 返回 NORMAL 模式，输入 `wq` 保存并退出。
 
