@@ -34,8 +34,9 @@ nav:
     博客相关:
       源码: https://github.com/MSQY-H/LJXH-BLOG-HEXO-SOLITUDE || https://simpleicons.org/icons/github.svg
       Solitude: https://solitude.js.org/cn || /img/solitude_logo.png
-    项目: # name
+    个人网站: # name
       主页: https://msqy.cc.cd || /img/pwa/favicon.ico # name: url || icon
+      图库: https://life.ljxh-h.cc.cd/gallery || /img/pwa/favicon.ico
   #  project: # name
   #    Solitude: https://github.com/everfu/hexo-theme-solitude || /img/pwa/favicon.ico # name: url || icon
 
@@ -693,10 +694,10 @@ highlight:
 # --------------------------- start ---------------------------
 # Lightbox
 # 图片灯箱
-lightbox: false
+lightbox: true
 # warning: Please select any one, but cannot be turned on at the same time.
 # 警告: 请任选其一，但不能同时开启。
-fancybox: false # fancybox
+fancybox: true # fancybox
 mediumZoom: false # mediumZoom
 # --------------------------- end ---------------------------
 

@@ -6,7 +6,7 @@ tags:
   - Termux
   - 终端
 categories:
-  - 技术
+  - 软件
 cover: cover.webp
 comments: true
 ai_text: 本文记录 Termux 配置 zsh 与美化的步骤：安装 zsh、Oh My Zsh、Powerlevel10k 主题及自动补全等高亮插件，通过 Termux:Styling 设置字体配色，最终完成终端美化与功能增强。

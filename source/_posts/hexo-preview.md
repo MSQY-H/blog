@@ -6,7 +6,7 @@ tags:
   - Hexo
   - Solitude
 categories:
-  - 技术
+  - 博客
 cover: cover.webp
 comments: true
 ai_text: Hexo Solitude 主题本地预览时外挂标签样式丢失，原因是 hexo s 与插件冲突。解决方案：改用 hexo g 生成静态文件，再通过 npx serve public 启动服务器。提供自动化脚本实现文件监听、增量构建和服务器管理，支持快捷键操作。

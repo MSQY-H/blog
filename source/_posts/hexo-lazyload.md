@@ -6,7 +6,7 @@ tags:
   - Hexo
   - Solitude
 categories:
-  - 技术
+  - 博客
 cover: cover.webp
 comments: true
 ai_text: Hexo Solitude 主题懒加载配置为 site 时导致页面崩溃，根源是主题用正则处理 HTML 易出错。解决方案：安装 cheerio 库，重写 lazyload.js，改用 cheerio 操作 DOM 实现图片懒加载，并分别注册全站和文章过滤器，问题解决。

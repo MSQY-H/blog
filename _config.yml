@@ -110,7 +110,7 @@ search:
 
 feed:
   enable: true
-  content: false
+  content: true
   content_limit: 40
   type: rss2
   path: rss2.xml
@@ -124,3 +124,42 @@ sitemap:
 marked:
   prependRoot: true
   postAsset: true
+
+# hexo-all-minifier 资源压缩配置
+all_minifier: true
+html_minifier:
+  enable: true
+  ignore_error: false
+  exclude:
+css_minifier:
+  enable: true
+  exclude: 
+    - '*.min.css'
+js_minifier:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude: 
+    - '*.min.js'
+image_minifier:
+  enable: true
+  interlaced: false
+  multipass: false
+  optimizationLevel: 2
+  pngquant: false
+  progressive: false
+  webp: true
+
+preconnect:
+  enable: true
+  # Add a non-crossorigin to your font-domain
+  non_cross_origin: true
+  # Add a connection to the comment system
+  comments: true
+  # Other domains to preconnect
+  custom:
+    - https://fonts.googleapis.com
+    - https://cdn.jsdelivr.net
+    - https://unpkg.com
+    - https://cdnjs.cloudflare.com

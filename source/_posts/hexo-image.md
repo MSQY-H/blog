@@ -6,7 +6,7 @@ tags:
   - Hexo
   - Solitude
 categories:
-  - 技术
+  - 博客
 cover: cover.webp
 comments: true
 ai_text: Hexo 引用图片时默认指向主题目录，文章资源文件夹默认配置也不完美。本文介绍了三种方案：图床、标签插件和 Markdown 嵌入插件，并针对封面图路径问题提供了一个自动转换脚本，简化了资源管理流程。适合折腾 Hexo 图片引用的用户参考。
