@@ -32,11 +32,13 @@ nav:
   # 左侧盒子
   group:
     博客相关:
-      源码: https://github.com/MSQY-H/LJXH-BLOG-HEXO-SOLITUDE || https://simpleicons.org/icons/github.svg
+      源码: https://github.com/blog || https://simpleicons.org/icons/github.svg
       Solitude: https://solitude.js.org/cn || /img/solitude_logo.png
     个人网站: # name
-      主页: https://msqy.cc.cd || /img/pwa/favicon.ico # name: url || icon
+      主页: https://msqy-h.github.io/homepage || /img/pwa/favicon.ico # name: url || icon
       图库: https://life.ljxh-h.cc.cd/gallery || /img/pwa/favicon.ico
+      监测: https://status.msqy.cc.cd/ || https://status.msqy.cc.cd/logo.svg
+      封面: https://cover.msqy.cc.cd/picprose/ || /img/picprose.png
   #  project: # name
   #    Solitude: https://github.com/everfu/hexo-theme-solitude || /img/pwa/favicon.ico # name: url || icon
 

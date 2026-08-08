@@ -4,7 +4,7 @@
 
 # Site
 title: MSQY's Blog
-subtitle: 'NVIDIA GeForce RTX 5060 Ti'
+subtitle: '所见所闻，所思所想'
 description: '这里是MSQY的博客，分享生活和发现。长风破浪会有时，直挂云帆济沧海！'
 keywords: 博客, Hexo, Solitude, MSQY
 author: 陌上轻烟
@@ -13,7 +13,7 @@ timezone: 'asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://www.msqy.cc.cd/
+url: https://msqy-h.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -101,7 +101,9 @@ theme: solitude
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:msqy-h/msqy-h.github.io.git
+  branch: main
   
 search:
   path: search.xml
