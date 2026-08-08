@@ -46,16 +46,16 @@ importers:
         version: 2.0.0
       hexo-renderer-marked:
         specifier: ^7.0.1
-        version: 7.0.1(supports-color@2.0.0)
+        version: 7.0.1
       hexo-renderer-pug:
         specifier: ^3.0.0
         version: 3.0.0
       hexo-renderer-stylus:
         specifier: ^3.0.1
-        version: 3.0.1(supports-color@2.0.0)
+        version: 3.0.1
       hexo-server:
         specifier: ^3.0.0
-        version: 3.0.0(supports-color@2.0.0)
+        version: 3.0.0
       hexo-solitude-tag:
         specifier: ^1.0.22
         version: 1.0.22
@@ -71,10 +71,10 @@ importers:
         version: 5.0.0
       express:
         specifier: ^5.2.1
-        version: 5.2.1(supports-color@2.0.0)
+        version: 5.2.1
       serve-static:
         specifier: ^2.2.1
-        version: 2.2.1(supports-color@2.0.0)
+        version: 2.2.1
 
 packages:
 
@@ -1068,6 +1068,10 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
+  range-parser@1.3.0:
+    resolution: {integrity: sha512-hek2mFQpPuI4E1BBKrSto+BU3e3x4xuarsbiwr3+lf7p44juvFMV0XFWQAP3xUyqXA4RrXLIoaSUGbSt056ZMw==}
+    engines: {node: '>= 0.6'}
+
   raw-body@3.0.2:
     resolution: {integrity: sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==}
     engines: {node: '>= 0.10'}
@@ -1197,10 +1201,6 @@ packages:
   stylus@0.62.0:
     resolution: {integrity: sha512-v3YCf31atbwJQIMtPNX8hcQ+okD4NQaTuKGUWfII8eaqn+3otrbttGL1zSMZAAtiPsBztQnujVBugg/cXFUpyg==}
     hasBin: true
-
-  supports-color@2.0.0:
-    resolution: {integrity: sha512-KKNVtd6pCYgPIKU4cp2733HWYCpplQhddZLBUryaAHou723x+FRzQ5Df824Fj+IyyuiQTRoub4SnIFfIcrp70g==}
-    engines: {node: '>=0.8.0'}
 
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
@@ -1432,11 +1432,11 @@ snapshots:
 
   bluebird@3.7.2: {}
 
-  body-parser@2.3.0(supports-color@2.0.0):
+  body-parser@2.3.0:
     dependencies:
       bytes: 3.1.2
       content-type: 2.0.0
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
       http-errors: 2.0.1
       iconv-lite: 0.7.3
       on-finished: 2.4.1
@@ -1537,11 +1537,11 @@ snapshots:
     dependencies:
       mime-db: 1.54.0
 
-  compression@1.8.1(supports-color@2.0.0):
+  compression@1.8.1:
     dependencies:
       bytes: 3.1.2
       compressible: 2.0.18
-      debug: 2.6.9(supports-color@2.0.0)
+      debug: 2.6.9
       negotiator: 0.6.4
       on-headers: 1.1.0
       safe-buffer: 5.2.1
@@ -1551,10 +1551,10 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  connect@3.7.0(supports-color@2.0.0):
+  connect@3.7.0:
     dependencies:
-      debug: 2.6.9(supports-color@2.0.0)
-      finalhandler: 1.1.2(supports-color@2.0.0)
+      debug: 2.6.9
+      finalhandler: 1.1.2
       parseurl: 1.3.3
       utils-merge: 1.0.1
     transitivePeerDependencies:
@@ -1601,17 +1601,13 @@ snapshots:
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
 
-  debug@2.6.9(supports-color@2.0.0):
+  debug@2.6.9:
     dependencies:
       ms: 2.0.0
-    optionalDependencies:
-      supports-color: 2.0.0
 
-  debug@4.4.3(supports-color@2.0.0):
+  debug@4.4.3:
     dependencies:
       ms: 2.1.3
-    optionalDependencies:
-      supports-color: 2.0.0
 
   decimal.js@10.6.0: {}
 
@@ -1717,20 +1713,20 @@ snapshots:
 
   etag@1.8.1: {}
 
-  express@5.2.1(supports-color@2.0.0):
+  express@5.2.1:
     dependencies:
       accepts: 2.0.0
-      body-parser: 2.3.0(supports-color@2.0.0)
+      body-parser: 2.3.0
       content-disposition: 1.1.0
       content-type: 1.0.5
       cookie: 0.7.2
       cookie-signature: 1.2.2
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
       depd: 2.0.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
-      finalhandler: 2.1.1(supports-color@2.0.0)
+      finalhandler: 2.1.1
       fresh: 2.0.0
       http-errors: 2.0.1
       merge-descriptors: 2.0.0
@@ -1741,9 +1737,9 @@ snapshots:
       proxy-addr: 2.0.7
       qs: 6.15.3
       range-parser: 1.2.1
-      router: 2.2.0(supports-color@2.0.0)
-      send: 1.2.1(supports-color@2.0.0)
-      serve-static: 2.2.1(supports-color@2.0.0)
+      router: 2.2.0
+      send: 1.2.1
+      serve-static: 2.2.1
       statuses: 2.0.2
       type-is: 2.1.0
       vary: 1.1.2
@@ -1779,9 +1775,9 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
-  finalhandler@1.1.2(supports-color@2.0.0):
+  finalhandler@1.1.2:
     dependencies:
-      debug: 2.6.9(supports-color@2.0.0)
+      debug: 2.6.9
       encodeurl: 1.0.2
       escape-html: 1.0.3
       on-finished: 2.3.0
@@ -1791,9 +1787,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  finalhandler@2.1.1(supports-color@2.0.0):
+  finalhandler@2.1.1:
     dependencies:
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
       encodeurl: 2.0.0
       escape-html: 1.0.3
       on-finished: 2.4.1
@@ -1960,11 +1956,11 @@ snapshots:
     dependencies:
       ejs: 3.1.10
 
-  hexo-renderer-marked@7.0.1(supports-color@2.0.0):
+  hexo-renderer-marked@7.0.1:
     dependencies:
       dompurify: 3.4.12
       hexo-util: 3.3.0
-      jsdom: 25.0.1(supports-color@2.0.0)
+      jsdom: 25.0.1
       marked: 15.0.12
     transitivePeerDependencies:
       - bufferutil
@@ -1976,23 +1972,23 @@ snapshots:
     dependencies:
       pug: 3.0.4
 
-  hexo-renderer-stylus@3.0.1(supports-color@2.0.0):
+  hexo-renderer-stylus@3.0.1:
     dependencies:
-      nib: 1.2.0(stylus@0.62.0(supports-color@2.0.0))
-      stylus: 0.62.0(supports-color@2.0.0)
+      nib: 1.2.0(stylus@0.62.0)
+      stylus: 0.62.0
     transitivePeerDependencies:
       - supports-color
 
-  hexo-server@3.0.0(supports-color@2.0.0):
+  hexo-server@3.0.0:
     dependencies:
       bluebird: 3.7.2
-      compression: 1.8.1(supports-color@2.0.0)
-      connect: 3.7.0(supports-color@2.0.0)
+      compression: 1.8.1
+      connect: 3.7.0
       mime: 3.0.0
-      morgan: 1.11.0(supports-color@2.0.0)
+      morgan: 1.11.0
       open: 8.4.2
       picocolors: 1.1.1
-      serve-static: 1.16.3(supports-color@2.0.0)
+      serve-static: 1.16.3
     transitivePeerDependencies:
       - supports-color
 
@@ -2098,17 +2094,17 @@ snapshots:
       statuses: 2.0.2
       toidentifier: 1.0.1
 
-  http-proxy-agent@7.0.2(supports-color@2.0.0):
+  http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@7.0.6(supports-color@2.0.0):
+  https-proxy-agent@7.0.6:
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
@@ -2190,15 +2186,15 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsdom@25.0.1(supports-color@2.0.0):
+  jsdom@25.0.1:
     dependencies:
       cssstyle: 4.6.0
       data-urls: 5.0.0
       decimal.js: 10.6.0
       form-data: 4.0.6
       html-encoding-sniffer: 4.0.0
-      http-proxy-agent: 7.0.2(supports-color@2.0.0)
-      https-proxy-agent: 7.0.6(supports-color@2.0.0)
+      http-proxy-agent: 7.0.2
+      https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
       nwsapi: 2.2.24
       parse5: 7.3.0
@@ -2287,10 +2283,10 @@ snapshots:
 
   moment@2.30.1: {}
 
-  morgan@1.11.0(supports-color@2.0.0):
+  morgan@1.11.0:
     dependencies:
       basic-auth: 2.0.1
-      debug: 2.6.9(supports-color@2.0.0)
+      debug: 2.6.9
       depd: 2.0.0
       on-finished: 2.4.1
       on-headers: 1.1.0
@@ -2307,9 +2303,9 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  nib@1.2.0(stylus@0.62.0(supports-color@2.0.0)):
+  nib@1.2.0(stylus@0.62.0):
     dependencies:
-      stylus: 0.62.0(supports-color@2.0.0)
+      stylus: 0.62.0
 
   no-case@3.0.4:
     dependencies:
@@ -2479,6 +2475,8 @@ snapshots:
 
   range-parser@1.2.1: {}
 
+  range-parser@1.3.0: {}
+
   raw-body@3.0.2:
     dependencies:
       bytes: 3.1.2
@@ -2509,9 +2507,9 @@ snapshots:
 
   rfdc@1.4.1: {}
 
-  router@2.2.0(supports-color@2.0.0):
+  router@2.2.0:
     dependencies:
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
       depd: 2.0.0
       is-promise: 4.0.0
       parseurl: 1.3.3
@@ -2535,9 +2533,9 @@ snapshots:
     dependencies:
       xmlchars: 2.2.0
 
-  send@0.19.2(supports-color@2.0.0):
+  send@0.19.2:
     dependencies:
-      debug: 2.6.9(supports-color@2.0.0)
+      debug: 2.6.9
       depd: 2.0.0
       destroy: 1.2.0
       encodeurl: 2.0.0
@@ -2553,9 +2551,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  send@1.2.1(supports-color@2.0.0):
+  send@1.2.1:
     dependencies:
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
@@ -2564,26 +2562,26 @@ snapshots:
       mime-types: 3.0.2
       ms: 2.1.3
       on-finished: 2.4.1
-      range-parser: 1.2.1
+      range-parser: 1.3.0
       statuses: 2.0.2
     transitivePeerDependencies:
       - supports-color
 
-  serve-static@1.16.3(supports-color@2.0.0):
+  serve-static@1.16.3:
     dependencies:
       encodeurl: 2.0.0
       escape-html: 1.0.3
       parseurl: 1.3.3
-      send: 0.19.2(supports-color@2.0.0)
+      send: 0.19.2
     transitivePeerDependencies:
       - supports-color
 
-  serve-static@2.2.1(supports-color@2.0.0):
+  serve-static@2.2.1:
     dependencies:
       encodeurl: 2.0.0
       escape-html: 1.0.3
       parseurl: 1.3.3
-      send: 1.2.1(supports-color@2.0.0)
+      send: 1.2.1
     transitivePeerDependencies:
       - supports-color
 
@@ -2647,18 +2645,15 @@ snapshots:
     dependencies:
       anynum: 1.0.1
 
-  stylus@0.62.0(supports-color@2.0.0):
+  stylus@0.62.0:
     dependencies:
       '@adobe/css-tools': 4.3.3
-      debug: 4.4.3(supports-color@2.0.0)
+      debug: 4.4.3
       glob: 7.2.3
       sax: 1.3.0
       source-map: 0.7.6
     transitivePeerDependencies:
       - supports-color
-
-  supports-color@2.0.0:
-    optional: true
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
