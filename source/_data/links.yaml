@@ -22,11 +22,11 @@ links:
     type: item # 显示方式，有两种card/item 
     suffix: 
     link_list: 
-      - name: LJXH LIFE
-        link: https://life.ljxh-h.cc.cd/
-        description: LJXH 的生活博客
-        avatar: /img/avatar.webp
       - name: HXJL BLOG # 友链名称 
         link: https://ljxh-blog.cc.cd # 友链地址 
-        description: HXJL 的博客 # 友链简介 
+        description: HXJL 的博客，来自 DeepSeek # 友链简介 
         avatar: https://i.ibb.co/WW9gRnNk/IMG-20251228-111816.jpg# 显示头像 
+      - name: THW's Blog # 友链名称 
+        link: https://blog.tianhw.top# 友链地址 
+        description: 前途似海，来日方长 # 友链简介 
+        avatar: https://image.tianhw.top/avatar.webp# 显示头像 

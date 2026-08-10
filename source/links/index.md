@@ -10,9 +10,9 @@ banner: false
 
 ```
 网站名称：MSQY
-网站描述：NVIDIA GeForce RTX 5060 Ti!
-网站链接：https://www.ljxh-h.cc.cd/
-网站头像：https://i.ibb.co/C52GJDbp/avatar.webp
+网站描述：所见所闻，所思所想
+网站链接：https://msqy-h.github.io/
+网站头像：https://i.ibb.co/21G6Ps3k/avatar.webp
 ```
 
 ## 申请友链

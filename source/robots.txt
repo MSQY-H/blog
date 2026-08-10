@@ -4,5 +4,6 @@ Allow: /
 Disallow: /archives/
 Disallow: /categories/
 Disallow: /tags/
+Disallow: /picprose/
 
-Sitemap: https://www.msqy.cc.cd/sitemap.xml
+Sitemap: https://msqy-h.github.io/sitemap.xml
