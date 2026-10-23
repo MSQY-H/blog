@@ -33,7 +33,7 @@
     "hexo-wordcount": "^6.0.1"
   },
   "devDependencies": {
-    "chokidar": "^5.0.0",
+    "chokidar": "^6.0.0",
     "express": "^5.2.1",
     "serve-static": "^2.2.1"
   }
